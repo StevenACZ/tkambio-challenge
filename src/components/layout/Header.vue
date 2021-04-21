@@ -1,8 +1,13 @@
 <template>
   <header class="header">
-    <div class="logo">
-      <img src="@/assets/images/Logo-TKambio.png" alt="Logo tkambio" />
-    </div>
+    <a class="icon-mobile--menu" href="/">
+      <img src="@/assets/images/icon-menu-mobile.png" alt="Menu mobile" />
+    </a>
+    <img
+      class="logo"
+      src="@/assets/images/Logo-TKambio.png"
+      alt="Logo tkambio"
+    />
     <ul class="nav">
       <li class="nav__item">Blog</li>
       <li class="nav__item">Promociones</li>
@@ -10,6 +15,9 @@
       <li class="nav__item">Contáctanos</li>
     </ul>
     <Button text="Iniciar sesión" />
+    <a class="icon-mobile--login" href="/">
+      <img src="@/assets/images/icon-login.png" alt="Menu mobile" />
+    </a>
   </header>
 </template>
 
@@ -32,7 +40,16 @@ export default {
   align-items: center;
   border: 1px solid black;
   max-width: 992px;
+  padding: 30px 0;
   margin: 0 auto;
+
+  .icon-mobile--menu {
+    display: none;
+  }
+
+  .icon-mobile--login {
+    display: none;
+  }
 
   .logo {
     cursor: pointer;
@@ -46,10 +63,50 @@ export default {
     .nav__item {
       color: white;
       margin-right: 28px;
+      font-size: 15px;
+      line-height: 16px;
+      font-weight: 300;
 
       &:last-child {
         margin-right: 0px;
       }
+    }
+  }
+
+  @media (max-width: 991px) {
+    position: relative;
+    padding: 30px 30px;
+
+    .icon-mobile--menu {
+      display: block;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .nav {
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 20px 20px;
+
+    .icon-mobile--login {
+      display: block;
+    }
+
+    .logo {
+      width: 160px;
+      height: 31px;
+    }
+
+    .btn {
+      display: none;
     }
   }
 }
