@@ -1,7 +1,26 @@
 <template>
   <div class="hero">
     <Header />
-    <main class="home"></main>
+    <main class="landing-page">
+      <div class="info">
+        <header class="info__header">
+          <h2>
+            Sé tu propio cambista.
+          </h2>
+          <h4>Seguro, rápido y al mejor cambio</h4>
+          <p>Inscritos en la Superintendencia de Banca, Seguros y AFP.</p>
+        </header>
+
+        <footer class="info__footer">
+          <Button text="Crear cuenta" />
+          <a href="/">¿Cómo funciona?</a>
+        </footer>
+      </div>
+
+      <div class="exchange">
+        <h1>Hola</h1>
+      </div>
+    </main>
     <Footer />
   </div>
 </template>
@@ -22,12 +41,130 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .hero {
-  background: red;
-}
+  background-image: url('../assets/images/background.png');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
 
-.home {
-  color: red;
+  .landing-page {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 'info exchange';
+    max-width: 992px;
+    margin: 70px auto;
+
+    .info {
+      grid-area: info;
+      color: white;
+      text-align: start;
+
+      .info__header {
+        & > h2 {
+          font-size: 50px;
+          line-height: 60px;
+          font-weight: 700;
+        }
+
+        & > h4 {
+          font-size: 20px;
+          line-height: 20.72px;
+          font-weight: 300;
+          margin: 24px 0 11px;
+        }
+
+        & > p {
+          font-size: 11px;
+          line-height: 11.4px;
+          font-weight: 300;
+          margin-bottom: 28px;
+        }
+      }
+
+      .info__footer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        & > a {
+          margin-top: 9px;
+          color: white;
+        }
+      }
+    }
+
+    .exchange {
+      grid-area: exchange;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .landing-page {
+      max-width: 75%;
+      grid-template-columns: 40% 1fr;
+      padding: 0;
+
+      .info > .info__header {
+        & > h2 {
+          font-size: 38px;
+          line-height: 40px;
+        }
+
+        & > h4 {
+          font-size: 16px;
+          line-height: 20px;
+          padding-right: 40px;
+          margin: 24px 0 11px;
+        }
+
+        & > p {
+          font-size: 9px;
+          padding-right: 40px;
+          line-height: 13px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .landing-page {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'info'
+        'exchange';
+      margin: 30px auto;
+      padding: 0 20px;
+
+      .info {
+        text-align: center;
+
+        .info__header {
+          margin-bottom: 27px;
+
+          & > h2 {
+            font-size: 30px;
+            line-height: 36px;
+            font-weight: 700;
+          }
+
+          & > h4 {
+            font-size: 16px;
+            line-height: 23px;
+            font-weight: 300;
+            margin-top: 6px;
+          }
+
+          & > p {
+            display: none;
+          }
+        }
+
+        .info__footer {
+          display: none;
+        }
+      }
+    }
+  }
 }
 </style>
