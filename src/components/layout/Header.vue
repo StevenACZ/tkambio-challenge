@@ -38,10 +38,10 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
-  max-width: 992px;
   padding: 30px 0;
+  max-width: 992px;
   margin: 0 auto;
+  border: 1px solid black;
 
   .icon-mobile--menu {
     display: none;
