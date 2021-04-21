@@ -103,6 +103,7 @@ export default {
     .landing-page {
       max-width: 75%;
       grid-template-columns: 40% 1fr;
+      margin: 40px auto;
       padding: 0;
 
       .info > .info__header {
