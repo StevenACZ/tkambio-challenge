@@ -41,7 +41,6 @@ export default {
   padding: 30px 0;
   max-width: 992px;
   margin: 0 auto;
-  border: 1px solid black;
 
   .icon-mobile--menu {
     display: none;
