@@ -18,7 +18,7 @@
       </div>
 
       <div class="exchange">
-        <h1>Hola</h1>
+        <Exchange />
       </div>
     </main>
     <Footer />
@@ -30,6 +30,7 @@
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import Button from '../components/ui/Button';
+import Exchange from '../components/Exchange';
 
 export default {
   name: 'Home',
@@ -37,6 +38,7 @@ export default {
     Header,
     Footer,
     Button,
+    Exchange,
   },
 };
 </script>
