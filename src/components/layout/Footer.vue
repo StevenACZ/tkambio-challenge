@@ -39,6 +39,7 @@ export default {
   grid-template-areas: 'banks info';
   max-width: 992px;
   margin: 0 auto;
+  padding-bottom: 30px;
 
   .banks {
     grid-area: banks;

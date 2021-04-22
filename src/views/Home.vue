@@ -105,7 +105,7 @@ export default {
   @media (max-width: 991px) {
     .landing-page {
       max-width: 75%;
-      grid-template-columns: 40% 1fr;
+      grid-template-columns: 45% 1fr;
       margin: 40px auto 140px auto;
       padding: 0;
 
