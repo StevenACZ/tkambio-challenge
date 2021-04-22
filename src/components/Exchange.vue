@@ -9,7 +9,7 @@
         </div>
         <div class="send__quantity">
           <h4>Envias</h4>
-          <input type="number" placeholder="100.000,00" v-model="send" />
+          <input type="number" placeholder="0.00" v-model="send" />
         </div>
       </div>
 
@@ -20,7 +20,7 @@
         </div>
         <div class="send__quantity">
           <h4>Envias</h4>
-          <input type="number" placeholder="100.000,00" v-model="send" />
+          <input type="number" placeholder="0.00" v-model="send" />
         </div>
       </div>
 
@@ -39,7 +39,7 @@
           <input
             type="number"
             disabled
-            placeholder="100.000"
+            placeholder="0.00"
             v-model="calcReceive"
           />
         </div>
@@ -55,7 +55,7 @@
           <input
             type="number"
             disabled
-            placeholder="100.000"
+            placeholder="0.00"
             v-model="calcReceive"
           />
         </div>
@@ -83,6 +83,7 @@
       </div>
       <div class="promotional-code">
         <a href="/">¿Tienes un código promocional? Ingrésalo acá</a>
+        <img src="@/assets/images/arrow-down-black.png" alt="arrow downblack" />
       </div>
       <Button text="¡A cambiar!" type="primary" size="big" />
     </footer>
@@ -347,6 +348,7 @@ export default {
         line-height: 18px;
         font-weight: 300;
         color: black;
+        margin-right: 5px;
       }
     }
 
