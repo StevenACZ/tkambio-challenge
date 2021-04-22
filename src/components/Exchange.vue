@@ -37,8 +37,8 @@
     <footer class="exchange__footer">
       <div class="exchange-rate">
         <h3>
-          Tipo de Cambio:
-          <span class="buy">Compra: 3.398</span>
+          <p>Tipo de Cambio:</p>
+          <span class="buy active">Compra: 3.398</span>
           <span class="sale">Venta: 3.398</span>
         </h3>
       </div>
@@ -205,15 +205,20 @@ export default {
         line-height: 13.47px;
         font-weight: 300;
 
+        & > p {
+          display: inline-block;
+          margin-right: 5px;
+        }
+
         .buy {
-          font-weight: 600;
           border-right: 1px solid black;
           padding-right: 8px;
           margin-right: 8px;
-          text-decoration: underline;
         }
 
-        .sale {
+        .active {
+          font-weight: 600;
+          text-decoration: underline;
         }
       }
     }
@@ -314,6 +319,18 @@ export default {
       .icon-reverse {
         left: 70%;
         transform: translate(0%, -50%);
+      }
+    }
+
+    .exchange__footer {
+      .exchange-rate {
+        & > h3 {
+          & > p {
+            display: block;
+            margin-right: 0;
+            margin-bottom: 10px;
+          }
+        }
       }
     }
   }
