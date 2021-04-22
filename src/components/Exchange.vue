@@ -34,13 +34,31 @@
       />
     </header>
 
-    <footer class="exchange__footer"></footer>
+    <footer class="exchange__footer">
+      <div class="exchange-rate">
+        <h3>
+          Tipo de Cambio:
+          <span class="buy">Compra: 3.398</span>
+          <span class="sale">Venta: 3.398</span>
+        </h3>
+      </div>
+      <div class="promotional-code">
+        <a href="/">¿Tienes un código promocional? Ingrésalo acá</a>
+      </div>
+      <Button text="¡A cambiar!" type="primary" size="big" />
+    </footer>
   </div>
 </template>
 
 <script>
+// Components
+import Button from './ui/Button';
+
 export default {
   name: 'Exchange',
+  components: {
+    Button,
+  },
 };
 </script>
 
@@ -48,7 +66,7 @@ export default {
 .exchange {
   background-color: #eeeeee;
   border-radius: 15px;
-  padding: 12px 11px;
+  padding: 12px 11px 40px 11px;
 
   .exchange__header {
     display: grid;
@@ -177,6 +195,46 @@ export default {
   }
 
   .exchange__footer {
+    position: relative;
+
+    .exchange-rate {
+      margin-top: 19px;
+
+      & > h3 {
+        font-size: 13px;
+        line-height: 13.47px;
+        font-weight: 300;
+
+        .buy {
+          font-weight: 600;
+          border-right: 1px solid black;
+          padding-right: 8px;
+          margin-right: 8px;
+          text-decoration: underline;
+        }
+
+        .sale {
+        }
+      }
+    }
+
+    .promotional-code {
+      margin-top: 20px;
+
+      & > a {
+        font-size: 10px;
+        line-height: 18px;
+        font-weight: 300;
+        color: black;
+      }
+    }
+
+    & > button {
+      position: absolute;
+      bottom: 0%;
+      left: 50%;
+      transform: translate(-50%, 130%);
+    }
   }
 
   @media (max-width: 991px) {
