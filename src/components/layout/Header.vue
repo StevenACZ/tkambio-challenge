@@ -12,7 +12,13 @@
       <li class="nav__item">Blog</li>
       <li class="nav__item">Promociones</li>
       <li class="nav__item">Preguntas frecuentes</li>
-      <li class="nav__item">Contáctanos</li>
+      <li class="nav__item">
+        <span>Contáctanos</span>
+        <img
+          src="@/assets/images/arrow-down-white.png"
+          alt="arrow down white"
+        />
+      </li>
     </ul>
     <Button text="Iniciar sesión" />
     <a class="icon-mobile--login" href="/">
@@ -65,9 +71,17 @@ export default {
       font-size: 15px;
       line-height: 16px;
       font-weight: 300;
+      cursor: pointer;
 
       &:last-child {
         margin-right: 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > span {
+          margin-right: 8px;
+        }
       }
     }
   }
