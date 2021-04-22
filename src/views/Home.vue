@@ -20,6 +20,12 @@
       <div class="exchange">
         <Exchange />
       </div>
+
+      <img
+        class="ilustration"
+        src="@/assets/images/ilustration.png"
+        alt="Ilustration"
+      />
     </main>
     <Footer />
   </div>
@@ -52,11 +58,19 @@ export default {
   height: 100vh;
 
   .landing-page {
+    position: relative;
     display: grid;
-    grid-template-columns: 45% 1fr;
+    grid-template-columns: 40% 1fr;
     grid-template-areas: 'info exchange';
     max-width: 992px;
     margin: 70px auto 160px auto;
+
+    .ilustration {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-0%, 40%);
+    }
 
     .info {
       grid-area: info;
@@ -99,6 +113,7 @@ export default {
 
     .exchange {
       grid-area: exchange;
+      margin-right: 60px;
     }
   }
 
@@ -108,6 +123,10 @@ export default {
       grid-template-columns: 45% 1fr;
       margin: 40px auto 140px auto;
       padding: 0;
+
+      .ilustration {
+        display: none;
+      }
 
       .info > .info__header {
         & > h2 {
@@ -127,6 +146,11 @@ export default {
           padding-right: 40px;
           line-height: 13px;
         }
+      }
+
+      .exchange {
+        grid-area: exchange;
+        margin-right: 0px;
       }
     }
   }
