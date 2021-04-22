@@ -278,11 +278,12 @@ export default {
         }
 
         & > input {
-          width: 100%;
+          width: 90%;
           font-size: 35px;
           line-height: 36.26px;
           font-weight: 300;
           border: none;
+          border-radius: 0;
           outline: none;
           border-bottom: 1px solid black;
           background-color: transparent;
