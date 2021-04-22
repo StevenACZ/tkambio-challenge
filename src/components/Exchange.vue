@@ -1,14 +1,26 @@
 <template>
   <div class="exchange">
     <header class="exchange__header">
-      <div class="send">
+      <!-- SEND -->
+      <div class="send" v-if="change">
         <div class="send__type">
-          <h3>SOL</h3>
+          <h3>{{ pen_usd.money }}</h3>
           <img src="@/assets/images/bandera-peru.png" alt="flag" />
         </div>
         <div class="send__quantity">
           <h4>Envias</h4>
-          <input type="text" placeholder="100.000,00" />
+          <input type="number" placeholder="100.000,00" v-model="send" />
+        </div>
+      </div>
+
+      <div class="send" v-else>
+        <div class="send__type">
+          <h3>{{ usd_pen.money }}</h3>
+          <img src="../assets/images/bandera-usa.png" alt="flag" />
+        </div>
+        <div class="send__quantity">
+          <h4>Envias</h4>
+          <input type="number" placeholder="100.000,00" v-model="send" />
         </div>
       </div>
 
@@ -16,19 +28,42 @@
         <div class="line"></div>
       </div>
 
-      <div class="receive">
+      <!-- RECEIVE -->
+      <div class="receive" v-if="change">
         <div class="receive__type">
-          <h3>DÓLARES</h3>
+          <h3>{{ usd_pen.money }}</h3>
           <img src="@/assets/images/bandera-usa.png" alt="flag" />
         </div>
         <div class="receive__quantity">
           <h4>Recibes</h4>
-          <input type="text" placeholder="100.000" />
+          <input
+            type="number"
+            disabled
+            placeholder="100.000"
+            v-model="calcReceive"
+          />
+        </div>
+      </div>
+
+      <div class="receive" v-else>
+        <div class="receive__type">
+          <h3>{{ pen_usd.money }}</h3>
+          <img src="@/assets/images/bandera-peru.png" alt="flag" />
+        </div>
+        <div class="receive__quantity">
+          <h4>Recibes</h4>
+          <input
+            type="number"
+            disabled
+            placeholder="100.000"
+            v-model="calcReceive"
+          />
         </div>
       </div>
 
       <img
         class="icon-reverse"
+        @click="activeChange"
         src="@/assets/images/icon-cambio.png"
         alt="icono cambio"
       />
@@ -38,8 +73,12 @@
       <div class="exchange-rate">
         <h3>
           <p>Tipo de Cambio:</p>
-          <span class="buy active">Compra: 3.398</span>
-          <span class="sale">Venta: 3.398</span>
+          <span class="buy" :class="change ? '' : 'active'"
+            >Compra: {{ pen_usd.rate.toFixed(3) }}</span
+          >
+          <span class="sale" :class="change ? 'active' : ''"
+            >Venta: {{ (pen_usd.rate + 0.01).toFixed(3) }}</span
+          >
         </h3>
       </div>
       <div class="promotional-code">
@@ -51,6 +90,9 @@
 </template>
 
 <script>
+// Axios
+import axios from 'axios';
+
 // Components
 import Button from './ui/Button';
 
@@ -58,6 +100,57 @@ export default {
   name: 'Exchange',
   components: {
     Button,
+  },
+  data() {
+    return {
+      change: true,
+      pen_usd: {
+        name: 'PERU',
+        money: 'SOL',
+        rate: 3.742,
+        image: 'bandera-peru.png',
+      },
+      usd_pen: {
+        name: 'USA',
+        money: 'DÓLARES',
+        rate: 0.27,
+        image: '@/assets/images/bandera-usa.png',
+      },
+      send: 1000,
+      receive: 0,
+    };
+  },
+  computed: {
+    calcReceive() {
+      return (
+        this.send * (this.change ? this.usd_pen.rate : this.pen_usd.rate)
+      ).toFixed(2);
+    },
+    calcUsPenRate() {
+      return this.pen_usd.rate;
+    },
+  },
+  methods: {
+    async currencyConvert() {
+      try {
+        const { data: DATA_PEN_USD } = await axios.get(
+          `https://free.currconv.com/api/v7/convert?q=PEN_USD&compact=ultra&apiKey=8b642ccca9fad18d8208`
+        );
+        const { data: DATA_USD_PEN } = await axios.get(
+          `https://free.currconv.com/api/v7/convert?q=USD_PEN&compact=ultra&apiKey=8b642ccca9fad18d8208`
+        );
+        this.usd_pen.rate = DATA_PEN_USD.PEN_USD;
+        this.pen_usd.rate = DATA_USD_PEN.USD_PEN;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    activeChange() {
+      this.change = !this.change;
+    },
+  },
+  created() {
+    this.currencyConvert();
   },
 };
 </script>
@@ -123,6 +216,17 @@ export default {
           border-radius: 0;
           outline: none;
           border-bottom: 1px solid black;
+          background-color: transparent;
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+          &[type='number'] {
+            -moz-appearance: textfield;
+          }
         }
       }
     }
@@ -181,6 +285,17 @@ export default {
           border: none;
           outline: none;
           border-bottom: 1px solid black;
+          background-color: transparent;
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+          &[type='number'] {
+            -moz-appearance: textfield;
+          }
         }
       }
     }
