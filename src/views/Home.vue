@@ -53,7 +53,7 @@ export default {
 
   .landing-page {
     display: grid;
-    grid-template-columns: 40% 1fr;
+    grid-template-columns: 45% 1fr;
     grid-template-areas: 'info exchange';
     max-width: 992px;
     margin: 70px auto 160px auto;
