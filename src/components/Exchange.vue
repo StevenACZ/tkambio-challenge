@@ -313,6 +313,7 @@ export default {
 
   .exchange__footer {
     position: relative;
+    z-index: 999;
 
     .exchange-rate {
       margin-top: 19px;
@@ -357,6 +358,7 @@ export default {
       bottom: 0%;
       left: 50%;
       transform: translate(-50%, 130%);
+      z-index: 999;
     }
   }
 
