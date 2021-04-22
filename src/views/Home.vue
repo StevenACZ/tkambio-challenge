@@ -44,6 +44,7 @@ export default {
 <style lang="scss" scoped>
 .hero {
   background-image: url('../assets/images/background.png');
+  background-position: center top;
   background-repeat: no-repeat;
   width: 100%;
   height: 100vh;
@@ -53,7 +54,7 @@ export default {
     grid-template-columns: 50% 50%;
     grid-template-areas: 'info exchange';
     max-width: 992px;
-    margin: 70px auto;
+    margin: 70px auto 160px auto;
 
     .info {
       grid-area: info;
@@ -103,7 +104,7 @@ export default {
     .landing-page {
       max-width: 75%;
       grid-template-columns: 40% 1fr;
-      margin: 40px auto;
+      margin: 40px auto 140px auto;
       padding: 0;
 
       .info > .info__header {
@@ -135,7 +136,6 @@ export default {
         'info'
         'exchange';
       margin: 30px auto;
-      padding: 0 20px;
 
       .info {
         text-align: center;
@@ -154,6 +154,7 @@ export default {
             line-height: 23px;
             font-weight: 300;
             margin-top: 6px;
+            padding: 0;
           }
 
           & > p {
